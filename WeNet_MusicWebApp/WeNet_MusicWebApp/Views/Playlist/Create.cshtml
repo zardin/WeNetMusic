@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+@model WeNet_MusicWebApp.Models.Music
+
+<div class="contentsite" style="margin-top:20px;">
+    <h1>
+        Add New Music
+    </h1>
+
+    @using (Html.BeginForm("Create", "Playlist", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.DisplayNameFor(model => model.MusicName)
+        <br />
+        @Html.EditorFor(model => model.MusicName)
+
+        <p></p>
+
+        @Html.DisplayNameFor(model => model.ProposedBy)
+        <br />
+        @Html.EditorFor(model => model.ProposedBy)
+
+        <p></p>
+
+        @Html.DisplayNameFor(model => model.Description)
+        <br />
+        @Html.EditorFor(model => model.Description)
+
+        <p>Upload a <b>mp3</b> file:</p>
+        <div class="form-group">
+            <input type="file" name="MusicFile" class="form-control" />
+        </div>
+
+        <p></p>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    }
+
+</div>
+
+

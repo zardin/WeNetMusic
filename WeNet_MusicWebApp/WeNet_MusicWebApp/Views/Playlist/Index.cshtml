@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model IEnumerable<WeNet_MusicWebApp.Models.Music>
+
+
+<h2>PlaylistContents</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MusicFilePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MusicName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProposedBy)
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <article class="audio">
+                    <audio controls>
+                        <source src="@item.MusicFilePath" id="@item.MusicId" type="audio/mp3" />
+                    </audio>
+                </article>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MusicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProposedBy)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MusicId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MusicId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MusicId })
+            </td>
+        </tr>
+    }
+
+    
+</table>
+<p>
+    @using (Html.BeginForm("Create", "Playlist", FormMethod.Get))
+    {
+        <button type="submit" class="btn btn-primary">Add Music</button>
+    }
+
+</p>

@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+@model WeNet_MusicWebApp.Models.Music
+
+<div class="contentsite" style="margin-top:20px;">
+    <h1>
+        @Html.DisplayFor(model => model.MusicName)
+    </h1>
+
+    @using (Html.BeginForm("Edit", "Playlist", FormMethod.Post))
+    {
+        @Html.EditorFor(model => model.MusicId)
+
+        @Html.DisplayNameFor(model => model.MusicName)
+        <br />
+        @Html.EditorFor(model => model.MusicName)
+
+        <p></p>
+
+        @Html.DisplayNameFor(model => model.ProposedBy)
+        <br />
+        @Html.EditorFor(model => model.ProposedBy)
+
+        <p></p>
+
+        @Html.DisplayNameFor(model => model.Description)
+        <br />
+        @Html.EditorFor(model => model.Description)
+
+        <p></p>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    }
+
+</div>
